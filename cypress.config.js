@@ -1,7 +1,6 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: 'yrrqkm',
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     reportDir: "mochawesome-report",
@@ -19,6 +18,10 @@ module.exports = defineConfig({
     viewportHeight: 800,
     defaultCommandTimeout: 8000,
     video: false,
+    specPattern: [
+      "cypress/e2e/**/*.cy.js",
+      "cypress/system-testing/**/*.cy.js",
+    ],
     setupNodeEvents(on, config) {
       require("cypress-mochawesome-reporter/plugin")(on);
       return config;

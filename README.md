@@ -20,7 +20,13 @@ tugas8-cypress-login-testing/
 ├── cypress/
 │ ├── e2e/
 │ │ └── auth/
-│ │ └── login_spec.cy.js
+│ │ └── e2e_spec.cy.js <- 5 test case E2E Testing
+│ ├── system-testing/
+│ │ └── auth/
+│ │ └── system_spec.cy.js <- 8 test case System Testing
+│ ├── pages/
+│ │ ├── LoginPage.js <- Page Object Model
+│ │ └── DashboardPage.js <- Page Object Model
 │ └── support/
 │ ├── commands.js
 │ └── e2e.js
@@ -64,6 +70,16 @@ mochawesome-report/index.html
 - E2E-003 — Admin menambahkan pegawai baru dan memverifikasi data tersimpan
 - E2E-017 — Mengakses modul My Info melalui menu navigasi Dashboard
 - E2E-018 — Logout setelah seluruh proses bisnis selesai
+
+## Grouping & Page Object Model
+
+- **Grouping**: test case dipisah berdasarkan jenisnya ke folder terpisah —
+  `cypress/e2e/auth/` untuk E2E Testing, `cypress/system-testing/auth/` untuk
+  System Testing. `cypress.config.js` di-custom (`specPattern`) agar Cypress
+  membaca spec dari kedua lokasi tersebut.
+- **Page Object Model**: locator dan aksi berulang (login, navigasi menu, dsb)
+  diabstraksi ke dalam `cypress/pages/LoginPage.js` dan
+  `cypress/pages/DashboardPage.js`, lalu di-import ke setiap spec test.
 
 ## Catatan Implementasi
 
